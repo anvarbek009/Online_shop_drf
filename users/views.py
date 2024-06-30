@@ -14,6 +14,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from shared.utility import send_email, check_email_or_phone
 from .serializers import *
 from .models import User, DONE, CODE_VERIFIED, NEW, VIA_EMAIL, VIA_PHONE
+from rest_framework import status,viewsets
 
 
 class CreateUserView(CreateAPIView):
@@ -218,3 +219,8 @@ class ResetPasswordView(UpdateAPIView):
                 'refresh': user.token()['refresh_token'],
             }
         )
+    
+
+class UsersView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = SignUpSerializer, ChangeUserInformation, ChangeUserPhotoSerializer
