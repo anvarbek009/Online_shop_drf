@@ -19,5 +19,4 @@ urlpatterns = [
     path('filter/products/', FilterProductsView.as_view()),
     path('filter/orders/', FilterOrdersView.as_view()),
     path('products/category/<int:pk>/', GetProductsByCategoryView.as_view()),
-
 ]
